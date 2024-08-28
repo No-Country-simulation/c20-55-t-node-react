@@ -1,0 +1,22 @@
+.login {
+	margin: 0 auto;
+	margin-top: 100px;
+	height: 500px;
+	width: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.login div {
+	height: 20%;
+	width: 100%;
+	margin-block: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login div:nth-child(2n) {
+	flex-direction: column;
+}
