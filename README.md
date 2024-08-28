@@ -1,3 +1,8 @@
+### Objetivo
+
+Facilitar la conexión entre refugios de animales y personas interesadas en adoptar mascotas, proporcionando una plataforma accesible y segura donde los usuarios puedan explorar perfiles detallados de mascotas disponibles, comunicarse con los refugios, y completar el proceso de adopción de manera eficiente y transparente.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -16,7 +21,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Tecnologia Front: Next.js, React js, Zustand, 
+Tecnologia Front: Next.js, React js, Zustand
+Backend: Node con Express JS
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
