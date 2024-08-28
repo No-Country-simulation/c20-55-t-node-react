@@ -1,18 +1,18 @@
 import React from "react";
 
-function Card() {
+function Card({ id, name, image, description }) {
 	return (
 		<>
-			<div className="card">
+			<div className="card" key={id}>
 				<div className="card-title">
-					<h3>Titulo</h3>
+					<h3>{name}</h3>
 				</div>
 				<div className="card-body">
-					<img src="" alt="mascota-image" />
-					<p>Descripcion</p>
+					<img src={image} alt={`${name}-image`} />
+					<p>{description}</p>
 				</div>
 				<div className="botones-accion">
-					<button>ver</button>
+					<button>Ver</button>
 				</div>
 			</div>
 		</>

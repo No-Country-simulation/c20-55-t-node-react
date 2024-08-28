@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "../components/Card";
+import ItemListContainer from "../components/ItemListContainer";
 
 function Page() {
 	return (
 		<div className="flex items-center h-full justify-center">
-			<Card />
+			<ItemListContainer />
 		</div>
 	);
 }
