@@ -1,40 +1,50 @@
 .card {
-	height: 450px;
+	height: 350px;
 	width: 300px;
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
 	border: 1px solid black;
 }
 
 .card-title {
-	margin: 0 auto;
-	height: 20%;
-	width: 90%;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.card-body {
-	margin: 0 auto;
-	height: 60%;
+	height: 25%;
 	width: 90%;
 }
-.card-body img {
+.card-title h3 {
 	height: 100%;
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 .botones-accion {
-	margin: 0 auto;
-	height: 20%;
-	width: 90%;
+	height: 25%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-
 .botones-accion button {
-	height: 75%;
+	height: 50px;
 	width: 100px;
+}
+
+.card-body {
+	margin: 0 auto;
+	height: 75%;
+	width: 100%;
+}
+.card-body img {
+	width: 95%;
+	aspect-ratio: 1/1;
+}
+.card-body p {
+	height: 100%;
+	padding: 10px;
+	display: flex;
+	align-items: top;
+	justify-content: center;
+	text-align: justify;
+	overflow: hidden;
 }
