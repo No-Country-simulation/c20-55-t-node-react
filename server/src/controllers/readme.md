@@ -1,0 +1,1 @@
+Controlador: El controlador actúa como intermediario entre el modelo y la vista. Recibe las solicitudes del usuario desde la vista, interactúa con el modelo para obtener los datos necesarios y luego envía esos datos a la vista para mostrarlos al usuari
