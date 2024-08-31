@@ -1,44 +1,25 @@
-import React, { useState } from "react";
-import "./card.css";
+import React from "react";
+import Link from "next/link";
 
-function Card({ id, title, image, description }) {
-	const [card, setCard] = useState(true);
-	if (card) {
-		return (
-			<button
-				onClick={() => {
-					setCard(false);
-				}}
-			>
-				<div className="card" key={id}>
-					<div className="card-title">
-						<h3>{title}</h3>
-					</div>
-					<div className="card-body">
-						<img src={image} alt={`${title}-image`} />
-					</div>
-					<div className="botones-accion"></div>
+function Card({ title, image, description }) {
+	return (
+		<Link href={{ pathname: "/itemDescription", query: { description } }}>
+			<div className="h-[350px] w-[300px] flex flex-col border border-black">
+				<div className="h-[25%] w-[90%] mx-auto">
+					<h3 className="flex h-full w-full items-center justify-center text-center">
+						{title}
+					</h3>
 				</div>
-			</button>
-		);
-	} else if (!card) {
-		return (
-			<div className="card" key={id}>
-				<div className="botones-accion">
-					<button
-						onClick={() => {
-							setCard(true);
-						}}
-					>
-						volver
-					</button>
-				</div>
-				<div className="card-body">
-					<p>{description}</p>
+				<div className="h-[70%] w-full flex flex-col items-center justify-center">
+					<img
+						src={image}
+						alt={`${title} image`}
+						className="w-[90%] aspect-square"
+					/>
 				</div>
 			</div>
-		);
-	}
+		</Link>
+	);
 }
 
 export default Card;
