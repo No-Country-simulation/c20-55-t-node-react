@@ -25,7 +25,7 @@ function Login() {
     //   setErrors({});
     //   router.push('/home');
     // }
-	router.push('/home');
+	router.push('/users/admin/home');
 
   };
 

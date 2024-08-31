@@ -1,7 +1,7 @@
 import React from "react";
-import ItemListContainer from "../components/ItemListContainer";
+import ItemListContainer from "../../../components/ItemListContainer";
 
-function Page() {
+function Home() {
 	return (
 		<div className="flex items-center h-full justify-center">
 			<ItemListContainer />
@@ -9,4 +9,4 @@ function Page() {
 	);
 }
 
-export default Page;
+export default Home;
