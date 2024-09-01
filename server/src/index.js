@@ -19,4 +19,6 @@ async function main() {
     }
 }
 
-main()
+app.use('/api/auth', authRouter);
+
+main();
