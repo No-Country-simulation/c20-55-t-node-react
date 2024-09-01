@@ -36,7 +36,7 @@ function itemListContainer() {
 
 	return (
 		<div className="flex flex-col">
-			<div className="flex gap-[30px]">
+			<div className="flex items-center justify-center gap-[30px] w-full">
 				<button
 					onClick={() => {
 						setMascotas(todos);
