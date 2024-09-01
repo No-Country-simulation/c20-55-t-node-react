@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from "react";
 import "./login.css";
 import PrimaryButton from "../components/PrimaryButton";
@@ -19,34 +19,40 @@ function Login() {
   };
 
   const handleLogin = () => {
-    // if (!formValues.usuario || !formValues.password) {
-    //   setErrors({ form: 'Usuario y contraseña son requeridos' });
-    // } else {
-    //   setErrors({});
-    //   router.push('/home');
-    // }
-	router.push('/users/admin/home');
+    const { usuario, password } = formValues;
 
+    if (!usuario || !password) {
+      setErrors({ form: 'Usuario y contraseña son requeridos' });
+    } else {
+      setErrors({});
+      if (usuario === 'admin@mail.com') {
+        router.push('/users/admin/home');
+      } else if (usuario === 'user@mail.com') {
+        router.push('/users/adopter/home');
+      } else {
+        setErrors({ form: 'Credenciales incorrectas' });
+      }
+    }
   };
 
   return (
     <div className="login">
-        <InputForm
-          type="text"
-          name="Email"
-          value={formValues.usuario}
-          onChange={handleInputChange}
-          placeholder="Email"
-          error={errors.usuario}
-        />
-        <InputForm
-          type="password"
-          name="Contraseña"
-          value={formValues.password}
-          onChange={handleInputChange}
-          placeholder="Contraseña"
-          error={errors.password}
-        />
+      <InputForm
+        type="text"
+        name="usuario"  
+        value={formValues.usuario}
+        onChange={handleInputChange}
+        placeholder="Email"
+        error={errors.usuario}
+      />
+      <InputForm
+        type="password"
+        name="password"  
+        value={formValues.password}
+        onChange={handleInputChange}
+        placeholder="Contraseña"
+        error={errors.password}
+      />
       <div>
         <a href="#">Olvidé mi contraseña</a>
       </div>
