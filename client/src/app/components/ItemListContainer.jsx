@@ -35,7 +35,7 @@ function ItemListContainer() {
 	const todos = data.map((animal) => animal);
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex justify-center flex-col">
 			<div className="flex items-center justify-center gap-[30px] w-full">
 				<button
 					onClick={() => {
@@ -59,7 +59,7 @@ function ItemListContainer() {
 					Gatos
 				</button>
 			</div>
-			<div className="flex flex-wrap justify-center gap-[30px] w-[80%] my-[50px]">
+			<div className="flex flex-wrap justify-center gap-[30px] w-[80%] my-[50px] mx-auto">
 				{mascotas.map((animal) => (
 					<Card
 						id={animal.id}
