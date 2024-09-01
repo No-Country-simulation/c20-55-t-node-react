@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./itemListContainer.css";
 
-function itemListContainer() {
+function ItemListContainer() {
 	const [data, setData] = useState([]);
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(true);
@@ -49,4 +49,4 @@ function itemListContainer() {
 	);
 }
 
-export default itemListContainer;
+export default ItemListContainer;
