@@ -2,29 +2,25 @@
 
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import "./itemListContainer.css";
+import { animales } from "./animales-en-adopcion";
 
 function itemListContainer() {
 	const [data, setData] = useState([]);
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(true);
+	const [mascotas, setMascotas] = useState([]);
 
 	useEffect(() => {
-		fetch("https://fakestoreapi.com/products")
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Error en el fetch");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				setData(data);
+		setTimeout(() => {
+			try {
+				setData(animales);
+				setMascotas(animales);
 				setLoading(false);
-			})
-			.catch((error) => {
-				setError(error.message);
+			} catch (error) {
+				setError("Error loading data");
 				setLoading(false);
-			});
+			}
+		}, 100);
 	}, []);
 
 	if (loading) {
@@ -34,17 +30,45 @@ function itemListContainer() {
 	if (error) {
 		return <p>Error: {error}</p>;
 	}
+	const gatos = data.filter((animal) => animal.Especie == "Gato");
+	const perros = data.filter((animal) => animal.Especie == "Perro");
+	const todos = data.map((animal) => animal);
 
 	return (
-		<div className="item-list flex flex-col items-center justify-center">
-			{data.map((product) => (
-				<Card
-					id={product.id}
-					title={product.title}
-					image={product.image}
-					description={product.description}
-				/>
-			))}
+		<div className="flex flex-col">
+			<div className="flex gap-[30px]">
+				<button
+					onClick={() => {
+						setMascotas(todos);
+					}}
+				>
+					Todos
+				</button>
+				<button
+					onClick={() => {
+						setMascotas(perros);
+					}}
+				>
+					Perros
+				</button>
+				<button
+					onClick={() => {
+						setMascotas(gatos);
+					}}
+				>
+					Gatos
+				</button>
+			</div>
+			<div className="flex flex-wrap justify-center gap-[30px] w-[80%] my-[50px]">
+				{mascotas.map((animal) => (
+					<Card
+						id={animal.id}
+						title={animal.Nombre}
+						image={animal.Foto}
+						description={animal.description}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }
