@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import smallLogo from '../../../assets/images/vercel.svg'; 
+import smallLogo from '../../assets/images/vercel.svg'; 
 
 // SVGs para los íconos
 const HomeIcon = () => (
@@ -26,12 +26,6 @@ const InformationCircleIcon = () => (
   </svg>
 );
 
-const MailIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-blue-700">
-    <path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v16h16V4H4zm3.5 5.5a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 .75.75v.7l-3.5 2.1-3.5-2.1v-.7zm1.5-.7v-.7h6v.7l-3 1.8-3-1.8z" />
-  </svg>
-);
-
 const LogoutIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-gray-500">
     <path d="M13.25 2a.75.75 0 0 0-1.5 0v8.75H5a2.25 2.25 0 0 0-2.25 2.25v3.75A2.25 2.25 0 0 0 5 19.75h6.75V22a.75.75 0 0 0 1.5 0v-8.75H19a.75.75 0 0 0 0-1.5h-4.25V2z" />
@@ -50,7 +44,7 @@ const XMarkIcon = () => (
   </svg>
 );
 
-export default function Navbarr({ children }) {
+export default function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -87,16 +81,9 @@ export default function Navbarr({ children }) {
                   </li>
                   <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-blue-700 text-slate-900 text-body font-body transition-all duration-300">
                     <UserCircleIcon className="mr-4" />
-                    <Link href="/profile">Perfil</Link>
+                    <Link href="/users/admin/perfil">Perfil</Link>
                   </li>
-                  <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-blue-700 text-slate-900 text-body font-body transition-all duration-300">
-                    <InformationCircleIcon className="mr-4" />
-                    <Link href="/about">Sobre Nosotros</Link>
-                  </li>
-                  <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-blue-700 text-slate-900 text-body font-body transition-all duration-300">
-                    <MailIcon className="mr-4" />
-                    <Link href="/contact">Contacto</Link>
-                  </li>
+             
                   <li className="flex items-center mr-3 p-3 border-b-2 border-transparent hover:border-blue-700 text-slate-900 text-body font-body transition-all duration-300">
                     <LogoutIcon className="mr-4" />
                     <Link href="/">Cerrar sesión</Link>
@@ -123,14 +110,6 @@ export default function Navbarr({ children }) {
             <li className="flex items-center">
               <UserCircleIcon className="mr-2" />
               <Link href="/profile">Perfil</Link>
-            </li>
-            <li className="flex items-center">
-              <InformationCircleIcon className="mr-2" />
-              <Link href="/about">Sobre Nosotros</Link>
-            </li>
-            <li className="flex items-center">
-              <MailIcon className="mr-2" />
-              <Link href="/contact">Contacto</Link>
             </li>
             <li className="flex items-center">
               <LogoutIcon className="mr-2" />
