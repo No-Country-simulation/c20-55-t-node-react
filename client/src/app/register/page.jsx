@@ -41,7 +41,7 @@ function RegistroAspirante() {
 
   return (
     <div className="registroAspirante gap-5">
-      <h2 className="text-2xl font-bold text-center mb-6">Registro para Adopción</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">¡Registrate para acceder a adopciones!</h2>
       <div>
         <InputForm
           type="text"

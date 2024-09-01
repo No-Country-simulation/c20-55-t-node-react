@@ -58,7 +58,7 @@ export default function Navbarr({ children }) {
       <div className="max-w-7xl mx-auto px-4 pt-2 lg:px-8">
         <div className="relative flex items-center justify-center h-16">
           <div className="flex ml-[45%] lg:mx-7">
-            <Link className='flex items-center' href="/home">
+            <Link className='flex items-center' href="users/adopter/home">
               <Image src={smallLogo} alt="Logo" className="h-11 w-auto" />
               <span className="hidden lg:block text-lg text-black font-damion ml-3 mr-2 pr-3">
                 AdoptApp
