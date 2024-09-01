@@ -3,7 +3,7 @@ import React from "react";
 import DynamicTab from "@/app/components/DynamicTab";
 import Requests from "./solicitudes/page";
 import PetUpdates from "./seguimiento/page";
-import ItemListContainer from "@/app/components/ItemListContainer";
+import AvailablePets from "./mascotas/page";
 
 const sections = [
   {
@@ -16,7 +16,7 @@ const sections = [
     id: 2,
     name: "Mascotas",
     title: "Gestión Mascotas Disponibles",
-    content: <ItemListContainer />,
+    content: <AvailablePets />,
   },
   {
     id: 3,
