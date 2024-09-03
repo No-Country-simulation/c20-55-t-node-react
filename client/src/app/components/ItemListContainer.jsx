@@ -63,9 +63,9 @@ function ItemListContainer() {
 				{mascotas.map((animal) => (
 					<Card
 						id={animal.id}
-						title={animal.Nombre}
-						image={animal.Foto}
-						description={animal.description}
+						Nombre={animal.Nombre}
+						Foto={animal.Foto}
+						description={animal.DescripcionGeneral}
 					/>
 				))}
 			</div>
