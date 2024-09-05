@@ -13,6 +13,7 @@ A través de esta app,  queremos no sólo encontrar hogares para las mascotas, s
 **Front End:** 
 - Nicolas Kowa
 - Lucero Camila Gonzalez
+- Natasha Pérez 
 
 **Back End:**
 - Leonel Gudiño
