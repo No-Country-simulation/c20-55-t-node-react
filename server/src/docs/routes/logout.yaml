@@ -1,0 +1,18 @@
+paths:
+    /logout:
+        post:
+            summary: Endpoint to log out a user
+            tags:
+                - Authentication
+            responses:
+                200:
+                    description: Successful logout
+                    schema:
+                        type: object
+                        properties:
+                            ok:
+                                type: boolean
+                            message:
+                                type: string
+            security:
+                - cookieAuth: []
