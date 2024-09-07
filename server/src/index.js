@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import connectToMongoDB from "./config/database.js";
 import { PORT } from "./config/config.js";
 import authRouter from "./routes/auth.router.js";
@@ -6,11 +7,14 @@ import authRouter from "./routes/auth.router.js";
 import basePath from "./utils/utils.js";
 import swaggerUiExpress from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+import { tokenToSession } from "./middlewares/tokenToSession.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(tokenToSession);
 
 async function main() {
     try {

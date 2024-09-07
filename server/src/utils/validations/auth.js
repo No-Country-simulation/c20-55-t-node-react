@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-export const loginValidations = [
+export const authValidations = [
   body('email')
     .isEmail()
     .withMessage('Dirección de correo electrónico inválida')

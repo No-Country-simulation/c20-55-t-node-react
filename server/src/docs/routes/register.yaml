@@ -1,0 +1,87 @@
+paths:
+    /admin-register:
+        post:
+            summary: Registar un usuario
+            tags:
+                - Authentication
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    format: email
+                                    example: admin@example.com
+                                password:
+                                    type: string
+                                    format: password
+                                    example: 12345Ll$
+            responses:
+                "200":
+                    description: Successful user admin registration
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Successful user user admin register
+                                    user:
+                                        type: object
+                                        properties:
+                                            email:
+                                                type: string
+                                                example: admin@example.com
+                                            role:
+                                                type: string
+                                                example: admin
+                "500":
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: "Error message"
+    /adopter-register:
+        post:
+            summary: Registar un usuario adoptante
+            description: El uso y respuestas es similar al de admin-register
+            tags:
+                - Authentication
+
+            responses:
+                "200":
+                    description: Successful user adopter registration
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Successful user user adopter register
+                                    user:
+                                        type: object
+                                        properties:
+                                            email:
+                                                type: string
+                                                example: adopter@example.com
+                                            role:
+                                                type: string
+                                                example: adopter
