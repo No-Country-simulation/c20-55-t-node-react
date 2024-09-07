@@ -14,18 +14,14 @@ paths:
                                 email:
                                     type: string
                                     format: email
-                                    example: user@example.com
+                                    example: admin@example.com
                                 password:
                                     type: string
                                     format: password
-                                    example: P@ssword123
-                                role:
-                                    type: string
-                                    enum: [admin, user]
-                                    example: user
+                                    example: 12345Ll$
             responses:
                 "200":
-                    description: Successful user registration
+                    description: Successful user admin registration
                     content:
                         application/json:
                             schema:
@@ -36,16 +32,16 @@ paths:
                                         example: true
                                     message:
                                         type: string
-                                        example: Successful user user register
+                                        example: Successful user user admin register
                                     user:
                                         type: object
                                         properties:
                                             email:
                                                 type: string
-                                                example: user@example.com
+                                                example: admin@example.com
                                             role:
                                                 type: string
-                                                example: user
+                                                example: admin
                 "500":
                     description: Internal server error
                     content:
@@ -65,3 +61,27 @@ paths:
             description: El uso y respuestas es similar al de admin-register
             tags:
                 - Authentication
+
+            responses:
+                "200":
+                    description: Successful user adopter registration
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Successful user user adopter register
+                                    user:
+                                        type: object
+                                        properties:
+                                            email:
+                                                type: string
+                                                example: adopter@example.com
+                                            role:
+                                                type: string
+                                                example: adopter
