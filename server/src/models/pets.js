@@ -9,13 +9,13 @@ const petSchema = new mongoose.Schema({
   size: { type: String, required: true },
   healthStatus: {
     type: String,
-    enum: ['healthy', 'sick', 'treatment', 'recovered'],
+    // enum: ['sano', 'enfermo', 'en tratamiento', 'recuperado'],
     default: 'healthy'
   },
   idDeleted: { type: Boolean, default: false },
   imgs: [String],
   category: { type: String, enum: ['perros', 'gatos'], required: true },
-  userAdmin: { type: Schema.Types.ObjectId, ref: 'Users', required: true },
+  // userAdmin: { type: Schema.Types.ObjectId, ref: 'Users', required: true },
   post: { type: Boolean, required: true }
 });
 
