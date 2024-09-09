@@ -1,5 +1,5 @@
 paths:
-    /admin-register:
+    /auth/admin-register:
         post:
             summary: Registar un usuario
             tags:
@@ -42,6 +42,42 @@ paths:
                                             role:
                                                 type: string
                                                 example: admin
+
+                "400":
+                    description: Errores de validación en la solicitud
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Errores de validación
+                                    errors:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                type:
+                                                    type: string
+                                                    example: filed
+                                                value:
+                                                    type: string
+                                                    example: 12345Ll
+                                                msg:
+                                                    type: string
+                                                    example: La contraseña debe contener al menos un carácter especial (@, $, !, %, *, ?, &)
+                                                path:
+                                                    type: string
+                                                    description: Este es el nombre del campo
+                                                    example: password
+                                                location:
+                                                    type: string
+                                                    example: body
+
                 "500":
                     description: Internal server error
                     content:
@@ -55,7 +91,7 @@ paths:
                                     message:
                                         type: string
                                         example: "Error message"
-    /adopter-register:
+    /auth/adopter-register:
         post:
             summary: Registar un usuario adoptante
             description: El uso y respuestas es similar al de admin-register

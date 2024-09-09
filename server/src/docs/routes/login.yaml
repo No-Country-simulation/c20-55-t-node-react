@@ -1,5 +1,5 @@
 paths:
-    /login:
+    /auth/login:
         post:
             summary: Inicia sesión y devuelve un token JWT en una cookie.
             description: Este endpoint permite a un usuario iniciar sesión usando su correo electrónico y contraseña. En caso de éxito, devuelve un token JWT en una cookie de sesión.

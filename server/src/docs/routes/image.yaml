@@ -1,0 +1,99 @@
+paths:
+    /image/upload:
+        post:
+            summary: Subir imágenes
+            description: Subir una o más imágenes al servidor y obtener las rutas donde se guardan.
+            tags:
+                - Image
+            requestBody:
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: string
+                                    description: Id del usuario, mascota, etc.
+                                files:
+                                    type: array
+                                    items:
+                                        type: string
+                                        format: binary
+                                    description: Archivos de imagen a subir.
+                required: true
+            responses:
+                "200":
+                    description: Imágenes subidas exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Images uploaded successfully
+                                    paths:
+                                        type: array
+                                        items:
+                                            type: string
+                                            example: /server/uploads/123image.jpg
+                "500":
+                    description: Error al subir las imágenes.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
+
+    /image/delete-image:
+        delete:
+            summary: Eliminar una imagen
+            description: Elimina una imagen del servidor según la ruta proporcionada.
+            tags:
+                - Image
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                imgPath:
+                                    type: string
+                                    description: Ruta de la imagen a eliminar.
+                required: true
+            responses:
+                "200":
+                    description: Imagen eliminada exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Image deleted successfully
+                "500":
+                    description: Error al eliminar la imagen.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message

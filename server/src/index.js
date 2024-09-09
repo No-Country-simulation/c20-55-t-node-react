@@ -2,12 +2,16 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import connectToMongoDB from "./config/database.js";
 import { PORT } from "./config/config.js";
-import authRouter from "./routes/auth.router.js";
-
 import basePath from "./utils/utils.js";
+import authRouter from "./routes/auth.router.js";
+import petRouter from "./routes/pet.router.js";
+import imageRouter from "./routes/image.router.js";
+
 import swaggerUiExpress from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+
 import { tokenToSession } from "./middlewares/tokenToSession.js";
+import { trimStrings } from "./middlewares/trimStrings.js";
 
 const app = express();
 
@@ -15,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(tokenToSession);
+app.use(trimStrings);
 
 async function main() {
     try {
@@ -31,8 +36,8 @@ const swaggerOptions = {
     definition: {
         openapi: "3.0.1",
         info: {
-            title: "Documentacion API Adopme",
-            description: "Documentacion para uso de Swagger"
+            title: "Documentacion API ADOPPET",
+            description: "Documentacion para uso de Swagger, api base: http://localhost:3000/api/",
         }
     },
     apis: [`${basePath}/docs/**/*.yaml`]
@@ -43,5 +48,7 @@ const specs = swaggerJSDoc(swaggerOptions);
 app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 app.use("/api/auth", authRouter);
+app.use("/api/pet", petRouter);
+app.use("/api/images", imageRouter);
 
 main();
