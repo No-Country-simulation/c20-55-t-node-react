@@ -1,5 +1,5 @@
 paths:
-    /logout:
+    /auth/logout:
         post:
             summary: Endpoint to log out a user
             tags:
