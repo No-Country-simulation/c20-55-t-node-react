@@ -263,3 +263,188 @@ paths:
                                     message:
                                         type: string
                                         example: Error message
+
+    /pet:
+        get:
+            summary: Obtener todas las mascotas
+            description: Devuelve una lista de todas las mascotas disponibles en la base de datos.
+            tags:
+                - Pet
+            responses:
+                "200":
+                    description: Lista de mascotas obtenida exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: string
+                                        name:
+                                            type: string
+                                        age:
+                                            type: integer
+                                        specie:
+                                            type: string
+                                            enum: ["perro", "gato"]
+                                        breed:
+                                            type: string
+                                        description:
+                                            type: string
+                                        size:
+                                            type: string
+                                        healthStatus:
+                                            type: string
+                                        imgs:
+                                            type: array
+                                            items:
+                                                type: string
+                                        category:
+                                            type: string
+                                            enum: ["perros", "gatos"]
+                                        post:
+                                            type: boolean
+                "500":
+                    description: Error del servidor al obtener mascotas.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
+
+    /pet/{id}:
+        get:
+            summary: Obtener una mascota por ID
+            description: Devuelve los detalles de una mascota basada en el ID proporcionado.
+            tags:
+                - Pet
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: El ID de la mascota que quieres obtener.
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Mascota obtenida exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: string
+                                    name:
+                                        type: string
+                                    age:
+                                        type: integer
+                                    specie:
+                                        type: string
+                                        enum: ["perro", "gato"]
+                                    breed:
+                                        type: string
+                                    description:
+                                        type: string
+                                    size:
+                                        type: string
+                                    healthStatus:
+                                        type: string
+                                    imgs:
+                                        type: array
+                                        items:
+                                            type: string
+                                    category:
+                                        type: string
+                                        enum: ["perros", "gatos"]
+                                    post:
+                                        type: boolean
+                "404":
+                    description: Mascota no encontrada.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Pet not found
+                "500":
+                    description: Error del servidor al obtener la mascota.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
+    
+    /pet/delete/{id}:
+        delete:
+            summary: Eliminar una mascota por ID
+            description: Elimina una mascota de la base de datos utilizando su ID.
+            tags:
+                - Pet
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: El ID de la mascota que quieres eliminar.
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Mascota eliminada exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Pet deleted successfully
+                "404":
+                    description: Mascota no encontrada.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Pet not found
+                "500":
+                    description: Error del servidor al eliminar la mascota.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
+    
