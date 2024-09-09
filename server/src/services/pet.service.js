@@ -79,4 +79,43 @@ export default class PetService {
             throw new Error(`Error updating pet: ${error.message}`);
         }
     }
+
+    async getAllPets() {
+        try {
+            return await petModel.find({});
+        } catch (error) {
+            throw new Error(`Error retrieving pets: ${error.message}`);
+            
+        }
+    }
+
+    async getPetById(petId) {
+        try {
+            const pet = await petModel.findById(petId);
+
+            if(!pet) {
+                throw new Error("Pet not found");
+            }
+
+            return pet;
+        } catch (error) {
+            throw new Error(`Error finding pet by ID: ${error.message}`);
+            
+        }
+    }
+
+    async deletePetById(petId) {
+        try {
+            const result = await petModel.findByIdAndDelete(petId);
+
+            if(!result) {
+                throw new Error("Pet not found");
+            }
+
+            return result;
+        } catch (error) {
+            throw new Error(`Error deleting pet by ID: ${error.message}`);
+            
+        }
+    }
 }

@@ -1,15 +1,19 @@
 import { Router } from "express";
-import multer from "multer";
 import {
     createPetController,
-    updatePetController
+    updatePetController,
+    getAllPetsController,
+    getPetByIdController,
+    deletePetByIdController
 } from "../controllers/pet.controller.js";
 
-const upload = multer({ dest: "uploads/" });
 
 const petRouter = Router();
 
-petRouter.post("/create", upload.array("imgs"), createPetController);
+petRouter.post("/create", createPetController);
 petRouter.put("/update/:petId", updatePetController);
+petRouter.get("/", getAllPetsController);
+petRouter.get("/:petId", getPetByIdController);
+petRouter.delete("/:petId", deletePetByIdController);   
 
 export default petRouter;
