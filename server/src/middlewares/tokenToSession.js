@@ -9,8 +9,6 @@ export const tokenToSession = (req, res, next) => {
     try {
         const userData = jwt.verify(token, SECRET_JWT_KEY);
         req.session.userData = userData;
-    } catch (error) {
-        console.error("Error verifying token:", error);
-    }
+    } catch (error) {}
     next();
 };
