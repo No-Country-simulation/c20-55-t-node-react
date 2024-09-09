@@ -1,0 +1,265 @@
+paths:
+    /pet/create:
+        post:
+            summary: Crear una nueva mascota
+            description: Crea una nueva mascota si no existen mascotas similares, o devuelve las mascotas similares si ya existen.
+            tags:
+                - Pet
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                continueCreate:
+                                    type: boolean
+                                    description: Si es true, se crea una nueva mascota sin verificar si ya existen similares, esto es para mostrar que posiblemente ya existe esa mascota.
+                                name:
+                                    type: string
+                                    description: Nombre de la mascota.
+                                age:
+                                    type: integer
+                                    description: Edad de la mascota.
+                                specie:
+                                    type: string
+                                    description: Especie de la mascota.
+                                    enum: ["perro", "gato"]
+                                breed:
+                                    type: string
+                                    description: Raza de la mascota.
+                                description:
+                                    type: string
+                                    description: Descripción de la mascota.
+                                size:
+                                    type: string
+                                    description: Tamaño de la mascota.
+                                healthStatus:
+                                    type: string
+                                    description: Estado de salud de la mascota.
+                                idDeleted:
+                                    type: boolean
+                                    description: Indica si la mascota ha sido eliminada.
+                                imgs:
+                                    type: array
+                                    items:
+                                        type: string
+                                    description: Imágenes de la mascota.
+                                category:
+                                    type: string
+                                    description: Categoría de la mascota.
+                                    enum: ["perros", "gatos"]
+                                post:
+                                    type: boolean
+                                    description: Si la mascota está publicada.
+                required: true
+            responses:
+                "200":
+                    description: Mascota creada exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Successfully registered a new pet
+                                    pet:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: string
+                                            name:
+                                                type: string
+                                            age:
+                                                type: integer
+                                            specie:
+                                                type: string
+                                            breed:
+                                                type: string
+                                            description:
+                                                type: string
+                                            size:
+                                                type: string
+                                            healthStatus:
+                                                type: string
+                                            idDeleted:
+                                                type: boolean
+                                            imgs:
+                                                type: array
+                                                items:
+                                                    type: string
+                                            category:
+                                                type: string
+                                            post:
+                                                type: boolean
+                "202":
+                    description: Ya existen mascotas con datos similares.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Already exist pets with similar data
+                                    pets:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                id:
+                                                    type: string
+                                                name:
+                                                    type: string
+                                                age:
+                                                    type: integer
+                                                specie:
+                                                    type: string
+                                                breed:
+                                                    type: string
+                                                description:
+                                                    type: string
+                                                size:
+                                                    type: string
+                                                healthStatus:
+                                                    type: string
+                                                idDeleted:
+                                                    type: boolean
+                                                imgs:
+                                                    type: array
+                                                    items:
+                                                        type: string
+                                                category:
+                                                    type: string
+                                                post:
+                                                    type: boolean
+                "500":
+                    description: Error en el servidor.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
+
+    /pet/update/{petId}:
+        put:
+            summary: Actualizar una mascota existente
+            description: Actualiza los datos de una mascota basada en el ID proporcionado.
+            tags:
+                - Pet
+            parameters:
+                - name: petId
+                  in: path
+                  required: true
+                  description: ID de la mascota a actualizar.
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                    description: Nombre de la mascota.
+                                age:
+                                    type: integer
+                                    description: Edad de la mascota.
+                                specie:
+                                    type: string
+                                    description: Especie de la mascota.
+                                    enum: ["perro", "gato"]
+                                breed:
+                                    type: string
+                                    description: Raza de la mascota.
+                                description:
+                                    type: string
+                                    description: Descripción de la mascota.
+                                size:
+                                    type: string
+                                    description: Tamaño de la mascota.
+                                healthStatus:
+                                    type: string
+                                    description: Estado de salud de la mascota.
+                                idDeleted:
+                                    type: boolean
+                                    description: Indica si la mascota ha sido eliminada.
+                                imgs:
+                                    type: array
+                                    items:
+                                        type: string
+                                    description: Imágenes de la mascota.
+                                category:
+                                    type: string
+                                    description: Categoría de la mascota.
+                                    enum: ["perros", "gatos"]
+                                post:
+                                    type: boolean
+                                    description: Si la mascota está publicada.
+                required: true
+            responses:
+                "200":
+                    description: Mascota actualizada exitosamente.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    pet:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: string
+                                            name:
+                                                type: string
+                                            age:
+                                                type: integer
+                                            specie:
+                                                type: string
+                                            breed:
+                                                type: string
+                                            description:
+                                                type: string
+                                            size:
+                                                type: string
+                                            healthStatus:
+                                                type: string
+                                            idDeleted:
+                                                type: boolean
+                                            imgs:
+                                                type: array
+                                                items:
+                                                    type: string
+                                            category:
+                                                type: string
+                                            post:
+                                                type: boolean
+                "500":
+                    description: Error en el servidor.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Error message
