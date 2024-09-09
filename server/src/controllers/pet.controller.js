@@ -67,3 +67,54 @@ export const updatePetController = async (req, res) => {
         });
     }
 };
+
+export const getAllPetsController = async (req, res) => {
+    try {
+        const pets = await petService.getAllPets();
+        res.status(200).json({
+            ok: true,
+            pets
+        });
+    } catch (error) {
+        console.log(`Error in pet controller, getAllPets: `, error);
+        res.status(500).json({
+            ok: false,
+            message:error.message
+        });
+    }
+};
+
+export const getPetByIdController = async (req, res) => {
+    try {
+        const { petId } = req.params;
+        const pet = await petService.getPetById(petId);
+        res.status(200).json({
+            ok: true,
+            pet
+        });
+    } catch (error) {
+        console.log(`Error in pet controller, getPetById: `, error);
+        res.status(500).json({
+            ok: false,
+            message: error.message
+        });
+    }
+}
+
+export const deletePetByIdController = async (req, res) => {
+    try {
+        const { petId } = req.params;
+        const result = await petService.deletePetById(petId);
+        res.status(200).json({
+            ok: true,
+            message: "Pet successfully deleted",
+            result
+        });
+    } catch (error) {
+        console.log(`Error in pet controller, deletePetById: `, error);
+        res.status(500).json({
+            ok: false,
+            message: error.message
+        });
+    }
+}

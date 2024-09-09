@@ -18,4 +18,16 @@ export default class PetRepository {
     async updatePet(petId, petData) {
         return await this.dao.updatePet(petId, petData);
     }
+
+    async getAllPets() {
+        return await this.dao.getAllPets();
+    }
+
+    async getPetById(petId) {
+        return await this.dao.getPetById(petId);
+    }
+
+    async deletePetById(petId) {
+        return await this.dao.deletePetById(petId);
+    }
 }
