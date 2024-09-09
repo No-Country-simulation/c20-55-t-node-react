@@ -14,6 +14,6 @@ petRouter.post("/create", createPetController);
 petRouter.put("/update/:petId", updatePetController);
 petRouter.get("/", getAllPetsController);
 petRouter.get("/:petId", getPetByIdController);
-petRouter.delete("/:petId", deletePetByIdController);   
+petRouter.delete("/delete/:petId", deletePetByIdController);   
 
 export default petRouter;
