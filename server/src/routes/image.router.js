@@ -9,7 +9,7 @@ const upload = multer({ dest: "uploads/" });
 
 const imageRouter = Router();
 
-imageRouter.post("/upload", upload.array("imgs"), uploadImagesController);
-imageRouter.post("/delete", deleteImageController);
+imageRouter.post("/", upload.array("imgs"), uploadImagesController);
+imageRouter.delete("/delete", deleteImageController);
 
 export default imageRouter;
