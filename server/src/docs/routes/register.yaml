@@ -1,5 +1,5 @@
 paths:
-    /auth/admin-register:
+    /api/auth/admin-register:
         post:
             summary: Registar un usuario
             tags:
@@ -91,7 +91,7 @@ paths:
                                     message:
                                         type: string
                                         example: "Error message"
-    /auth/adopter-register:
+    /api/auth/adopter-register:
         post:
             summary: Registar un usuario adoptante
             description: El uso y respuestas es similar al de admin-register

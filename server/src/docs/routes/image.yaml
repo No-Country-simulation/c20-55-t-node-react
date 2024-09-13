@@ -1,5 +1,5 @@
 paths:
-    /image/upload:
+    /api/images/:
         post:
             summary: Subir imágenes
             description: Subir una o más imágenes al servidor y obtener las rutas donde se guardan.
@@ -14,7 +14,7 @@ paths:
                                 id:
                                     type: string
                                     description: Id del usuario, mascota, etc.
-                                files:
+                                imgs:
                                     type: array
                                     items:
                                         type: string
@@ -54,7 +54,7 @@ paths:
                                         type: string
                                         example: Error message
 
-    /image/delete-image:
+    /api/images/delete:
         delete:
             summary: Eliminar una imagen
             description: Elimina una imagen del servidor según la ruta proporcionada.

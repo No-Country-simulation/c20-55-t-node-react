@@ -1,5 +1,5 @@
 paths:
-    /pet/create:
+    /api/pet/create:
         post:
             summary: Crear una nueva mascota
             description: Crea una nueva mascota si no existen mascotas similares, o devuelve las mascotas similares si ya existen.
@@ -39,6 +39,7 @@ paths:
                                 idDeleted:
                                     type: boolean
                                     description: Indica si la mascota ha sido eliminada.
+                                    example: false
                                 imgs:
                                     type: array
                                     items:
@@ -153,7 +154,7 @@ paths:
                                         type: string
                                         example: Error message
 
-    /pet/update/{petId}:
+    /api/pet/update/{petId}:
         put:
             summary: Actualizar una mascota existente
             description: Actualiza los datos de una mascota basada en el ID proporcionado.
@@ -264,7 +265,7 @@ paths:
                                         type: string
                                         example: Error message
 
-    /pet:
+    /api/pet:
         get:
             summary: Obtener todas las mascotas
             description: Devuelve una lista de todas las mascotas disponibles en la base de datos.
@@ -320,7 +321,7 @@ paths:
                                         type: string
                                         example: Error message
 
-    /pet/{id}:
+    /api/pet/{id}:
         get:
             summary: Obtener una mascota por ID
             description: Devuelve los detalles de una mascota basada en el ID proporcionado.
@@ -393,8 +394,8 @@ paths:
                                     message:
                                         type: string
                                         example: Error message
-    
-    /pet/delete/{id}:
+
+    /api/pet/delete/{id}:
         delete:
             summary: Eliminar una mascota por ID
             description: Elimina una mascota de la base de datos utilizando su ID.
@@ -447,4 +448,3 @@ paths:
                                     message:
                                         type: string
                                         example: Error message
-    
