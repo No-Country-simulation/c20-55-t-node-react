@@ -32,6 +32,16 @@ export const deleteImageController = async (req, res) => {
         const uploadImgPath = imgPath.replace("/server", ".");
         if (fs.existsSync(uploadImgPath)) {
             fs.unlinkSync(uploadImgPath);
+
+            res.status(200).json({
+                ok: true,
+                message: "Image deleted successfully"
+            });
+        } else {
+            res.status(404).json({
+                ok: false,
+                message: "Image not found"
+            });
         }
     } catch (error) {
         console.log(`Error in image controller, deleteImages: `, error);
