@@ -6,6 +6,7 @@ import basePath from "./utils/utils.js";
 import authRouter from "./routes/auth.router.js";
 import petRouter from "./routes/pet.router.js";
 import imageRouter from "./routes/image.router.js";
+import applicationRouter from "./routes/application.router.js";
 
 import swaggerUiExpress from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
@@ -50,5 +51,6 @@ app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 app.use("/api/auth", authRouter);
 app.use("/api/pet", petRouter);
 app.use("/api/images", imageRouter);
+app.use("/api/application", applicationRouter);
 
 main();
