@@ -1,0 +1,182 @@
+paths:
+    /api/application/{id}:
+        get:
+            summary: Obtener una solicitud de adopción con todo los datos de la mascota y el adoptante
+            tags:
+                - Application
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: Este es el id de la solicitud de adopción
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Application retrieved successfully
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: "Application retrieved successfully"
+                                    application:
+                                        type: object
+                                        properties:
+                                            adopterInfo:
+                                                type: object
+                                                properties:
+                                                    name:
+                                                        type: string
+                                                        example: "Leonel Angel"
+                                                    age:
+                                                        type: integer
+                                                        example: 30
+                                                    phone:
+                                                        type: string
+                                                        example: "+1234567890"
+                                                    nationalID:
+                                                        type: string
+                                                        example: "ABC123456789"
+                                                    housingType:
+                                                        type: string
+                                                        example: "Casa"
+                                                    housingOwnership:
+                                                        type: string
+                                                        example: "Propia"
+                                                    outdoorSpace:
+                                                        type: boolean
+                                                        example: true
+                                                    totalFamily:
+                                                        type: integer
+                                                        example: 4
+                                                    hasChildren:
+                                                        type: boolean
+                                                        example: true
+                                                    otherPets:
+                                                        type: boolean
+                                                        example: true
+                                                    typePets:
+                                                        type: string
+                                                        example: "Perros"
+                                                    hadPets:
+                                                        type: boolean
+                                                        example: true
+                                                    sizeHasPets:
+                                                        type: string
+                                                        example: "Mediano"
+                                                    surrenderPet:
+                                                        type: boolean
+                                                        example: false
+                                                    reasonSurrender:
+                                                        type: string
+                                                        example: ""
+                                                    commitments:
+                                                        type: object
+                                                        properties:
+                                                            coverCosts:
+                                                                type: boolean
+                                                                example: true
+                                                            returnPet:
+                                                                type: boolean
+                                                                example: true
+                                                    contract:
+                                                        type: string
+                                                        example: "esto seria la url del archivo"
+                                            _id:
+                                                type: string
+                                                format: uuid
+                                                example: "66e636ab3f49fe5ad76b04ef"
+                                            adopterId:
+                                                type: object
+                                                properties:
+                                                    _id:
+                                                        type: string
+                                                        format: uuid
+                                                        example: "66e636aa3f49fe5ad76b04d5"
+                                                    email:
+                                                        type: string
+                                                        example: "leonel@example.com"
+                                                    password:
+                                                        type: string
+                                                        example: "$2a$10$HJ3kTR323GFvuAU/cn0LHOFBL4SAVeoV2AFNE1IfonLF3oUQll59K"
+                                                    role:
+                                                        type: string
+                                                        example: "adopter"
+                                                    __v:
+                                                        type: integer
+                                                        example: 0
+                                            petId:
+                                                type: object
+                                                properties:
+                                                    _id:
+                                                        type: string
+                                                        format: uuid
+                                                        example: "66e636aa3f49fe5ad76b04d2"
+                                                    name:
+                                                        type: string
+                                                        example: "Nala"
+                                                    age:
+                                                        type: integer
+                                                        example: 3
+                                                    specie:
+                                                        type: string
+                                                        example: "gato"
+                                                    breed:
+                                                        type: string
+                                                        example: "Himalayo"
+                                                    description:
+                                                        type: string
+                                                        example: "Nala es una gata Himalayo serena y dulce, perfecta para una vida tranquila."
+                                                    size:
+                                                        type: string
+                                                        example: "Mediano"
+                                                    healthStatus:
+                                                        type: string
+                                                        example: "sano"
+                                                    idDeleted:
+                                                        type: boolean
+                                                        example: false
+                                                    imgs:
+                                                        type: array
+                                                        items:
+                                                            type: string
+                                                            format: uri
+                                                            example: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTO2QMaGsrIYkaur9M9H1lT0-xMoPtqcLicIkUT_AbesALMNaXA"
+                                                    category:
+                                                        type: string
+                                                        example: "gatos"
+                                                    post:
+                                                        type: boolean
+                                                        example: true
+                                                    __v:
+                                                        type: integer
+                                                        example: 0
+                                            status:
+                                                type: string
+                                                example: "Pendiente"
+                                            applicationDate:
+                                                type: string
+                                                format: date-time
+                                                example: "2024-09-15T01:21:47.639Z"
+                                            __v:
+                                                type: integer
+                                                example: 0
+                "500":
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: "Error message"

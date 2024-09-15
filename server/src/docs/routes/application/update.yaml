@@ -1,0 +1,217 @@
+paths:
+    /api/application/{id}:
+        put:
+            summary: Actualizar una solicitud por ID
+            description: Actualiza una solicitud específica identificada por su ID.
+            tags:
+                - Application
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: El ID de la solicitud que se desea actualizar.
+                  schema:
+                      type: string
+            requestBody:
+                description: Datos de la solicitud que se actualizarán solo si se les pasa, osea que si no pasa el name o age, esto no se actualizará.
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                status:
+                                    type: string
+                                    description: Estado actual de la aplicación (e.g., "En proceso", "Aprobada").
+                                    example: "En proceso"
+                                adopterInfo:
+                                    type: object
+                                    description: Información detallada del adoptante.
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: Nombre completo del adoptante.
+                                            example: "Leonel de la Garza"
+                                        age:
+                                            type: integer
+                                            description: Edad del adoptante.
+                                            example: 22
+                                        phone:
+                                            type: string
+                                            description: Número de teléfono del adoptante.
+                                            example: "+1234567890"
+                                        nationalID:
+                                            type: string
+                                            description: Identificación nacional del adoptante.
+                                            example: "ABC123456789"
+                                        housingType:
+                                            type: string
+                                            description: Tipo de vivienda del adoptante (e.g., "Casa", "Apartamento").
+                                            example: "Casa"
+                                        housingOwnership:
+                                            type: string
+                                            description: Propiedad de la vivienda (e.g., "Propia", "Alquilada").
+                                            example: "Propia"
+                                        outdoorSpace:
+                                            type: boolean
+                                            description: Indica si el adoptante tiene espacio exterior en su vivienda.
+                                            example: true
+                                        totalFamily:
+                                            type: integer
+                                            description: Número total de miembros en la familia del adoptante.
+                                            example: 4
+                                        hasChildren:
+                                            type: boolean
+                                            description: Indica si el adoptante tiene hijos.
+                                            example: true
+                                        otherPets:
+                                            type: boolean
+                                            description: Indica si el adoptante tiene otras mascotas.
+                                            example: true
+                                        typePets:
+                                            type: string
+                                            description: Tipo de mascotas que tiene el adoptante.
+                                            example: "Perros"
+                                        hadPets:
+                                            type: boolean
+                                            description: Indica si el adoptante ha tenido mascotas anteriormente.
+                                            example: true
+                                        sizeHasPets:
+                                            type: string
+                                            description: Tamaño de las mascotas que tiene el adoptante.
+                                            example: "Mediano"
+                                        surrenderPet:
+                                            type: boolean
+                                            description: Indica si el adoptante está dispuesto a entregar la mascota en caso de ser necesario.
+                                            example: false
+                                        reasonSurrender:
+                                            type: string
+                                            description: Razón para la entrega de la mascota, si aplica.
+                                            example: ""
+                                        commitments:
+                                            type: object
+                                            description: Compromisos del adoptante con respecto a la mascota.
+                                            properties:
+                                                coverCosts:
+                                                    type: boolean
+                                                    description: Indica si el adoptante está dispuesto a cubrir los costos asociados con la mascota.
+                                                    example: true
+                                                returnPet:
+                                                    type: boolean
+                                                    description: Indica si el adoptante está dispuesto a devolver la mascota si es necesario.
+                                                    example: true
+                                        contract:
+                                            type: string
+                                            description: URL del archivo del contrato firmado por el adoptante.
+                                            example: "esto seria la url del archivo"
+            responses:
+                "200":
+                    description: Aplicación actualizada exitosamente
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: "Application updated successfully"
+                                    updatedApplication:
+                                        type: object
+                                        properties:
+                                            adopterInfo:
+                                                type: object
+                                                properties:
+                                                    name:
+                                                        type: string
+                                                        example: "name cambiao"
+                                                    age:
+                                                        type: integer
+                                                        example: 30
+                                                    phone:
+                                                        type: string
+                                                        example: "+1234567890"
+                                                    nationalID:
+                                                        type: string
+                                                        example: "ABC123456789"
+                                                    housingType:
+                                                        type: string
+                                                        example: "Casa"
+                                                    housingOwnership:
+                                                        type: string
+                                                        example: "Propia"
+                                                    outdoorSpace:
+                                                        type: boolean
+                                                        example: true
+                                                    totalFamily:
+                                                        type: integer
+                                                        example: 4
+                                                    hasChildren:
+                                                        type: boolean
+                                                        example: true
+                                                    otherPets:
+                                                        type: boolean
+                                                        example: true
+                                                    typePets:
+                                                        type: string
+                                                        example: "Perros"
+                                                    hadPets:
+                                                        type: boolean
+                                                        example: true
+                                                    sizeHasPets:
+                                                        type: string
+                                                        example: "Mediano"
+                                                    surrenderPet:
+                                                        type: boolean
+                                                        example: false
+                                                    reasonSurrender:
+                                                        type: string
+                                                        example: ""
+                                                    commitments:
+                                                        type: object
+                                                        properties:
+                                                            coverCosts:
+                                                                type: boolean
+                                                                example: true
+                                                            returnPet:
+                                                                type: boolean
+                                                                example: true
+                                                    contract:
+                                                        type: string
+                                                        example: "esto seria la url del archivo"
+                                            _id:
+                                                type: string
+                                                format: uuid
+                                                example: "66e4672af2afa0b96f85e83a"
+                                            adopterId:
+                                                type: string
+                                                format: uuid
+                                                example: "66e45a9adff4e7736ba8c94a"
+                                            petId:
+                                                type: string
+                                                format: uuid
+                                                example: "66def329af4ec37e3479c09b"
+                                            status:
+                                                type: string
+                                                example: "Pendiente"
+                                            applicationDate:
+                                                type: string
+                                                format: date-time
+                                                example: "2024-09-13T16:24:10.872Z"
+                                            __v:
+                                                type: integer
+                                                example: 0
+                "500":
+                    description: Error interno del servidor
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: "Error message"

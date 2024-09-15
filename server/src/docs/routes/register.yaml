@@ -97,6 +97,21 @@ paths:
             description: El uso y respuestas es similar al de admin-register
             tags:
                 - Authentication
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    format: email
+                                    example: adopter@example.com
+                                password:
+                                    type: string
+                                    format: password
+                                    example: 12345Ll$
 
             responses:
                 "200":

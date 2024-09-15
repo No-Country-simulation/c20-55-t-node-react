@@ -1,0 +1,69 @@
+paths:
+    /api/application:
+        get:
+            summary: Obtener todas las solicitudes de adopción
+            tags:
+                - Application
+            responses:
+                "200":
+                    description: Applications retrieved successfully
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: "Applications retrieved successfully"
+                                    applications:
+                                        type: array
+                                        items:
+                                            type: object
+                                            properties:
+                                                adopterInfo:
+                                                    type: object
+                                                    properties:
+                                                        name:
+                                                            type: string
+                                                            example: "Leonel Angel"
+                                                        phone:
+                                                            type: string
+                                                            example: "+1234567890"
+                                                        nationalID:
+                                                            type: string
+                                                            example: "ABC123456789"
+                                                _id:
+                                                    type: string
+                                                    format: uuid
+                                                    example: "66e636ab3f49fe5ad76b04ef"
+                                                adopterId:
+                                                    type: string
+                                                    format: uuid
+                                                    example: "66e636aa3f49fe5ad76b04d5"
+                                                petId:
+                                                    type: string
+                                                    format: uuid
+                                                    example: "66e636aa3f49fe5ad76b04d2"
+                                                status:
+                                                    type: string
+                                                    example: "Pendiente"
+                                                applicationDate:
+                                                    type: string
+                                                    format: date-time
+                                                    example: "2024-09-15T01:21:47.639Z"
+                "500":
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: "Error message"

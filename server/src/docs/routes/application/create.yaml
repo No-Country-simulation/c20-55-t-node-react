@@ -1,0 +1,196 @@
+paths:
+    /api/application:
+        post:
+            summary: Creacoin de una nueva solicitud de adopción
+            tags:
+                - Application
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                adopterId:
+                                    type: string
+                                    format: uuid
+                                    example: "66e45a9adff4e7736ba8c94a"
+                                petId:
+                                    type: string
+                                    format: uuid
+                                    example: "66def329af4ec37e3479c09b"
+                                status:
+                                    type: string
+                                    example: "Pendiente"
+                                adopterInfo:
+                                    type: object
+                                    properties:
+                                        name:
+                                            type: string
+                                            example: "Leonel Angel"
+                                        age:
+                                            type: integer
+                                            example: 30
+                                        phone:
+                                            type: string
+                                            example: "+1234567890"
+                                        nationalID:
+                                            type: string
+                                            example: "ABC123456789"
+                                        housingType:
+                                            type: string
+                                            example: "Casa"
+                                        housingOwnership:
+                                            type: string
+                                            example: "Propia"
+                                        outdoorSpace:
+                                            type: boolean
+                                            example: true
+                                        totalFamily:
+                                            type: integer
+                                            example: 4
+                                        hasChildren:
+                                            type: boolean
+                                            example: true
+                                        otherPets:
+                                            type: boolean
+                                            example: true
+                                        typePets:
+                                            type: string
+                                            example: "Perros"
+                                        hadPets:
+                                            type: boolean
+                                            example: true
+                                        sizeHasPets:
+                                            type: string
+                                            example: "Mediano"
+                                        surrenderPet:
+                                            type: boolean
+                                            example: false
+                                        reasonSurrender:
+                                            type: string
+                                            example: ""
+                                        commitments:
+                                            type: object
+                                            properties:
+                                                coverCosts:
+                                                    type: boolean
+                                                    example: true
+                                                returnPet:
+                                                    type: boolean
+                                                    example: true
+                                        contract:
+                                            type: string
+                                            example: "esto seria la url del archivo"
+            responses:
+                "200":
+                    description: Application created successfully
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: "Application created successfully"
+                                    application:
+                                        type: object
+                                        properties:
+                                            adopterId:
+                                                type: string
+                                                format: uuid
+                                                example: "66e45a9adff4e7736ba8c94a"
+                                            petId:
+                                                type: string
+                                                format: uuid
+                                                example: "66def329af4ec37e3479c09b"
+                                            status:
+                                                type: string
+                                                example: "Pendiente"
+                                            adopterInfo:
+                                                type: object
+                                                properties:
+                                                    name:
+                                                        type: string
+                                                        example: "Leonel Angel"
+                                                    age:
+                                                        type: integer
+                                                        example: 30
+                                                    phone:
+                                                        type: string
+                                                        example: "+1234567890"
+                                                    nationalID:
+                                                        type: string
+                                                        example: "ABC123456789"
+                                                    housingType:
+                                                        type: string
+                                                        example: "Casa"
+                                                    housingOwnership:
+                                                        type: string
+                                                        example: "Propia"
+                                                    outdoorSpace:
+                                                        type: boolean
+                                                        example: true
+                                                    totalFamily:
+                                                        type: integer
+                                                        example: 4
+                                                    hasChildren:
+                                                        type: boolean
+                                                        example: true
+                                                    otherPets:
+                                                        type: boolean
+                                                        example: true
+                                                    typePets:
+                                                        type: string
+                                                        example: "Perros"
+                                                    hadPets:
+                                                        type: boolean
+                                                        example: true
+                                                    sizeHasPets:
+                                                        type: string
+                                                        example: "Mediano"
+                                                    surrenderPet:
+                                                        type: boolean
+                                                        example: false
+                                                    reasonSurrender:
+                                                        type: string
+                                                        example: ""
+                                                    commitments:
+                                                        type: object
+                                                        properties:
+                                                            coverCosts:
+                                                                type: boolean
+                                                                example: true
+                                                            returnPet:
+                                                                type: boolean
+                                                                example: true
+                                                    contract:
+                                                        type: string
+                                                        example: "esto seria la url del archivo"
+                                            _id:
+                                                type: string
+                                                format: uuid
+                                                example: "66e6391d97cbe7c1a7f3e1f8"
+                                            applicationDate:
+                                                type: string
+                                                format: date-time
+                                                example: "2024-09-15T01:32:13.846Z"
+                                            __v:
+                                                type: integer
+                                                example: 0
+                "500":
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    ok:
+                                        type: boolean
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: "Error message"

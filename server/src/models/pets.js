@@ -10,7 +10,7 @@ const petSchema = new mongoose.Schema({
   healthStatus: {
     type: String,
     // enum: ['sano', 'enfermo', 'en tratamiento', 'recuperado'],
-    default: 'healthy'
+    default: 'Sano'
   },
   idDeleted: { type: Boolean, default: false },
   imgs: [String],
