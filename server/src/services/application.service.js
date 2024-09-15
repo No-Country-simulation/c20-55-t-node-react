@@ -7,7 +7,6 @@ export default class ApplicationService {
             const application = new applicationModel(data);
             await application.save();
 
-            console.log(application);
             return application;
         } catch (error) {
             throw new Error(`Error creating application: ${error.message}`);
