@@ -5,8 +5,8 @@ import { PORT } from "./config/config.js";
 import basePath from "./utils/utils.js";
 import authRouter from "./routes/auth.router.js";
 import petRouter from "./routes/pet.router.js";
-import imageRouter from "./routes/image.router.js";
 import applicationRouter from "./routes/application.router.js";
+import filesRouter from "./routes/files.router.js";
 
 import swaggerUiExpress from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
@@ -38,7 +38,8 @@ const swaggerOptions = {
         openapi: "3.0.1",
         info: {
             title: "Documentacion API ADOPPET",
-            description: "Documentacion para uso de Swagger, api base: http://localhost:3000/api/",
+            description:
+                "Documentacion para uso de Swagger, api base: http://localhost:3000/api/"
         }
     },
     apis: [`${basePath}/docs/**/*.yaml`]
@@ -50,7 +51,7 @@ app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 app.use("/api/auth", authRouter);
 app.use("/api/pet", petRouter);
-app.use("/api/images", imageRouter);
+app.use("/api/file", filesRouter);
 app.use("/api/application", applicationRouter);
 
 main();

@@ -1,10 +1,10 @@
 paths:
-    /api/images/:
+    /api/file/:
         post:
-            summary: Subir imágenes
-            description: Subir una o más imágenes al servidor y obtener las rutas donde se guardan.
+            summary: Subir archivos
+            description: Subir una o más archivos al servidor y obtener las rutas donde se guardan.
             tags:
-                - Image
+                - Files
             requestBody:
                 content:
                     multipart/form-data:
@@ -14,16 +14,16 @@ paths:
                                 id:
                                     type: string
                                     description: Id del usuario, mascota, etc.
-                                imgs:
+                                files:
                                     type: array
                                     items:
                                         type: string
                                         format: binary
-                                    description: Archivos de imagen a subir.
+                                    description: Archivos a subir.
                 required: true
             responses:
                 "200":
-                    description: Imágenes subidas exitosamente.
+                    description: Archivos subidas exitosamente.
                     content:
                         application/json:
                             schema:
@@ -34,14 +34,14 @@ paths:
                                         example: true
                                     message:
                                         type: string
-                                        example: Images uploaded successfully
+                                        example: Files uploaded successfully
                                     paths:
                                         type: array
                                         items:
                                             type: string
-                                            example: /server/uploads/123image.jpg
+                                            example: /server/uploads/123file.jpg
                 "500":
-                    description: Error al subir las imágenes.
+                    description: Error al subir los archivos.
                     content:
                         application/json:
                             schema:
@@ -54,25 +54,25 @@ paths:
                                         type: string
                                         example: Error message
 
-    /api/images/delete:
+    /api/file:
         delete:
-            summary: Eliminar una imagen
-            description: Elimina una imagen del servidor según la ruta proporcionada.
+            summary: Eliminar un archivo
+            description: Elimina un archivo del servidor según la ruta proporcionada.
             tags:
-                - Image
+                - Files
             requestBody:
                 content:
                     application/json:
                         schema:
                             type: object
                             properties:
-                                imgPath:
+                                filePath:
                                     type: string
-                                    description: Ruta de la imagen a eliminar.
+                                    description: Ruta del archivo a eliminar.
                 required: true
             responses:
                 "200":
-                    description: Imagen eliminada exitosamente.
+                    description: Archivo eliminada exitosamente.
                     content:
                         application/json:
                             schema:
@@ -83,9 +83,9 @@ paths:
                                         example: true
                                     message:
                                         type: string
-                                        example: Image deleted successfully
+                                        example: File deleted successfully
                 "500":
-                    description: Error al eliminar la imagen.
+                    description: Error al eliminar el archivo.
                     content:
                         application/json:
                             schema:
