@@ -72,7 +72,12 @@ export const loginController = async (req, res) => {
 
         res.status(200).json({
             ok: true,
-            message: "Successful login"
+            message: "Successful login",
+            user: {
+                id: user._id,
+                email: user.email,
+                role: user.role
+            }
         });
     } catch (error) {
         console.error("Error in auth controller, login: ", error);

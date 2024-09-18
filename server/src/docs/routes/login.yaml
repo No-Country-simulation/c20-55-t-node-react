@@ -37,6 +37,18 @@ paths:
                                     message:
                                         type: string
                                         example: "Successful login"
+                                    user:
+                                        type: object
+                                        properties:
+                                            id: 
+                                                type: string
+                                                example: 12342342sdf232f2f
+                                            email:
+                                                type: string
+                                                example: admin@example.com
+                                            role:
+                                                type: string
+                                                example: admin
                 204:
                     description: No se encontró un usuario con el correo electrónico proporcionado.
                     content:
