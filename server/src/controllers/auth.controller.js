@@ -4,9 +4,11 @@ import { generateJWT } from "../utils/jwt.js";
 
 const registerUserController = async (req, res, role) => {
     try {
-        const { email, password } = req.body;
+        const { name, surname, email, password } = req.body;
         const passwordHashed = createHash(password);
         const newUser = await authService.createUser({
+            name,
+            surname,
             email,
             password: passwordHashed,
             role
@@ -16,6 +18,7 @@ const registerUserController = async (req, res, role) => {
             ok: true,
             message: `Successful user ${role} register`,
             user: {
+                id: newUser._id,
                 email,
                 role: newUser.role
             }

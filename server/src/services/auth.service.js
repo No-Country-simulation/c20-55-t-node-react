@@ -1,15 +1,15 @@
 import userModel from "../models/users.js";
 
 export default class AuthService {
-    async createUser({ email, password, role }) {
+    async createUser(userData) {
         try {
-            const existUser = await this.checkIfUserExists(email);
+            const existUser = await this.checkIfUserExists(userData.email);
             
             if (existUser) {
                 throw new Error("User with this email already exists");
             }
 
-            const user = new userModel({ email, password, role });
+            const user = new userModel(userData);
             user.save();
             return user;
         } catch (error) {

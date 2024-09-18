@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectToMongoDB from "./config/database.js";
 import { PORT } from "./config/config.js";
@@ -16,11 +17,20 @@ import { trimStrings } from "./middlewares/trimStrings.js";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(tokenToSession);
 app.use(trimStrings);
+
+
+const corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 async function main() {
     try {

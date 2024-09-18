@@ -11,6 +11,14 @@ paths:
                         schema:
                             type: object
                             properties:
+                                name:
+                                    type: string
+                                    format: text
+                                    example: Leonel
+                                surname:
+                                    type: string
+                                    format: text
+                                    example: Angel
                                 email:
                                     type: string
                                     format: email
@@ -36,6 +44,9 @@ paths:
                                     user:
                                         type: object
                                         properties:
+                                            id: 
+                                                type: string
+                                                example: 12342342sdf232f2f
                                             email:
                                                 type: string
                                                 example: admin@example.com
