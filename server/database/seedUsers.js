@@ -40,5 +40,12 @@ export const seedUsers = [
         name: "Agustin",
         surname: "Campastro",
         age: 19
+    },
+    {
+        email: "admin@example.com",
+        password: createHash("12345Ll$"),
+        role: "admin",
+        name: "Administrador",
+        age: 33
     }
 ];
