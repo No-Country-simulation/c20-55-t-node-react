@@ -24,7 +24,6 @@ function RegistroAspirante() {
       ...formValues,
       [name]: value
     });
-    console.log(formValues);
   };
 
   const handleSubmit = async (e) => {
@@ -54,7 +53,7 @@ function RegistroAspirante() {
 
     if (response.ok) {
       setFormValues(initialValues);
-      router.push("/users/admin/home");
+      router.push("/users/adopter/home");
     } else {
       if (result.errors) {
         const errors = result.errors[0];
