@@ -47,7 +47,8 @@ export default function DynamicTab({ sections, defaultActiveSectionId = 1 }) {
               aria-selected={activeSectionId === section.id}
               aria-controls={`panel${section.id}`}
               tabIndex={index}
-            >
+              onClick={()=> handleTabChange(section.id)}
+              >
               {section.name}
             </label>
             <div
@@ -59,13 +60,13 @@ export default function DynamicTab({ sections, defaultActiveSectionId = 1 }) {
               role='tabpanel'
               aria-labelledby={`description${section.id}`}
               aria-hidden={activeSectionId !== section.id}
-            >
+              >
               <p>{section.content}</p>
             </div>
           </li>
 
-          // <p>nada</p>
-        ))}
+// <p>nada</p>
+))}
       </ul>
     </div>
   );
