@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PrimaryButton from "@/app/components/PrimaryButton";
+import { BASE_PATH_API } from "@/app/_config";
 
 const mockRequests = [
   {
@@ -28,6 +29,7 @@ export default function Requests() {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [actionMessage, setActionMessage] = useState("");
+  const [requests, setRequests] = useState(null);
 
   const handleSelectRequest = (request) => {
     setSelectedRequest(request);
@@ -39,6 +41,19 @@ export default function Requests() {
     setSelectedRequest(null);
     setActionMessage("");
   };
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`${BASE_PATH_API}/application`);
+
+      const data = await response.json();
+
+      if (data.ok) {
+        console.log(data.applications);
+        setRequests(data.applications);
+      }
+    })();
+  }, []);
 
   const handleAction = (action) => {
     if (selectedRequest) {
@@ -63,91 +78,45 @@ export default function Requests() {
       <p>Revisa y gestiona las solicitudes de adopción recibidas</p>
       <div className="bg-white rounded-lg p-4 mt-8">
         <div className="space-y-4">
-          {mockRequests.map((request) => (
-            <div
-              key={request.id}
-              className="border border-gray-200 flex justify-between items-center rounded-lg"
-              onClick={() => handleSelectRequest(request)}
-            >
-              <div className="flex">
-                <img className="w-12 m-4" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-                <div className="flex flex-col justify-around">
-                  <span className="font-bold">{request.adopterName}</span>
-                  <span
-                    className={`rounded-xl w-[8rem] py-[.1rem] font-bold text-center ${
-                      request.status === "Pendiente"
-                        ? "bg-gray-400 "
-                        : request.status === "Aprobada"
-                        ? "bg-green-300"
-                        : "bg-red-400"
-                    }`}
-                  >
-                    {request.status}
-                  </span>
+          {requests &&
+            requests.map((request) => (
+              <div
+                key={request.id}
+                className="border border-gray-200 flex justify-between items-center rounded-lg"
+                onClick={() => handleSelectRequest(request)}
+              >
+                <div className="flex">
+                  <img
+                    className="w-12 m-4 mx-6"
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    alt=""
+                  />
+                  <div className="flex flex-col justify-around">
+                    <span className="font-bold">
+                      {request.adopterInfo.name}
+                    </span>
+                    <span
+                      className={`rounded-xl w-auto px-6 py-[.1rem] font-bold text-center ${
+                        {
+                          Pendiente: "bg-[#E5E5E5]",
+                          Aprobada: "bg-[#B9F3BB]",
+                          "Más Información": "bg-blue-300",
+                        }[request.status] || "bg-[#FFCFCA]"
+                      }`}
+                    >
+                      {request.status}
+                    </span>
+                  </div>
                 </div>
+                <PrimaryButton text={"Ver solicitud"} styles={"w-[13rem]"} />
               </div>
-              <PrimaryButton text={"Ver solicitud"} styles={"w-[13rem]"}/>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6">
-            <h2 className="text-2xl font-semibold mb-4">
-              Detalles de la Solicitud
-            </h2>
-            {selectedRequest && (
-              <>
-                <p>
-                  <strong>Nombre del Adoptante:</strong>{" "}
-                  {selectedRequest.adopterName}
-                </p>
-                <p>
-                  <strong>Estado:</strong> {selectedRequest.status}
-                </p>
-                <p className="mt-4">
-                  <strong>Detalles:</strong> {selectedRequest.details}
-                </p>
-                <div className="mt-6 flex gap-4">
-                  <button
-                    type="button"
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                    onClick={() => handleAction("approve")}
-                  >
-                    Aprobar
-                  </button>
-                  <button
-                    type="button"
-                    className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                    onClick={() => handleAction("reject")}
-                  >
-                    Rechazar
-                  </button>
-                  <button
-                    type="button"
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-                    onClick={() => handleAction("requestInfo")}
-                  >
-                    Solicitar más información
-                  </button>
-                </div>
-              </>
-            )}
-            <button
-              type="button"
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-              onClick={handleCloseModal}
-            >
-              Cerrar
-            </button>
-            {actionMessage && (
-              <p className="mt-4 text-center text-green-500">{actionMessage}</p>
-            )}
-          </div>
-        </div>
+        <p>hola</p>
       )}
     </div>
   );
