@@ -5,7 +5,7 @@ import Card from "./Card";
 import { BASE_PATH_API } from "../_config";
 import images from "next/image";
 
-function ItemListContainer() {
+function ItemListContainer({ adopt = 0 }) {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -93,6 +93,7 @@ function ItemListContainer() {
             Nombre={animal.name}
             Foto={animal.imgs[0]}
             raza={animal.breed}
+            adopt={adopt}
             // description={animal.DescripcionGeneral}
           />
         ))}
