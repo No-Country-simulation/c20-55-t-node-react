@@ -1,24 +1,24 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const petSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  age: { type: Number, required: true },
-  specie: { type: String, enum: ['perro', 'gato'], required: true },
-  breed: { type: String, required: true },
-  description: { type: String, required: true },
-  size: { type: String, required: true },
+  name: { type: String },
+  age: { type: Number },
+  specie: { type: String, enum: ["perro", "gato"], required: true },
+  breed: { type: String },
+  description: { type: String },
+  size: { type: String },
   healthStatus: {
     type: String,
     // enum: ['sano', 'enfermo', 'en tratamiento', 'recuperado'],
-    default: 'Sano'
+    default: "Sano"
   },
   idDeleted: { type: Boolean, default: false },
   imgs: [String],
-  category: { type: String, enum: ['perros', 'gatos'], required: true },
+  category: { type: String, enum: ["perros", "gatos"] },
   // userAdmin: { type: Schema.Types.ObjectId, ref: 'Users', required: true },
-  post: { type: Boolean, required: true }
+  post: { type: Boolean }
 });
 
-const petModel = mongoose.model('Pets', petSchema);
+const petModel = mongoose.model("Pets", petSchema);
 
 export default petModel;
